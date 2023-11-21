@@ -14,3 +14,10 @@ pnpm dev
 # or
 bun dev
 ```
+
+
+### Next Stepss
+
+- Create Page data 
+- Work on categories 
+- Better UX for exploring tags and searching
