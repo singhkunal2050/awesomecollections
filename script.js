@@ -2,6 +2,7 @@ const apiUrl = "https://api.github.com/search/repositories";
 const topic = "awesome";
 const perPage = 100; // Number of items per page
 let allRepos = [];
+const fs = require('fs')
 
 async function getAllRepositories() {
     let page = 1;
