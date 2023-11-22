@@ -3,6 +3,7 @@ const topic = "awesome";
 const perPage = 100; // Number of items per page
 let allRepos = [];
 const fs = require('fs')
+const jsonData =  require('./output.json');
 
 async function getAllRepositories() {
     let page = 1;
@@ -38,19 +39,38 @@ async function getAllRepositories() {
 }
 
 // Example usage
-getAllRepositories()
-    .then((repos) => {
-        // Process the data
-        repos.forEach((repo) => {
-            console.log(`Repo: ${repo.name}, Stars: ${repo.stargazers_count}`);
-        });
-        const filePath = 'output.json';
-        writeJsonToFile(allRepos, filePath);
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
+// getAllRepositories()
+//     .then((repos) => {
+//         // Process the data
+//         repos.forEach((repo) => {
+//             console.log(`Repo: ${repo.name}, Stars: ${repo.stargazers_count}`);
+//         });
+//         const filePath = 'output.json';
+//         writeJsonToFile(allRepos, filePath);
 
+//     })
+//     .catch((error) => {
+//         console.error("Error:", error);
+//     });
+
+
+
+async function getRepoReadmeFileContent(repo) {
+    const repoList = jsonData;
+    jsonData.forEach(async (repo) => {
+        let url = `https://api.github.com/repos/${repo.full_name}/readme`;
+        const response = await fetch(url, {
+            headers: {
+                Accept: "application/vnd.github.v3+json",
+            },
+        });
+        const readme = await response.json();
+        console.log({readme});
+        writeJsonToFile(readme,`readmes/${repo.full_name.replace('/', '_')}`)
+    })
+}
+
+getRepoReadmeFileContent();
 
 function writeJsonToFile(jsonObject, filePath) {
     // Convert the JSON object to a string with indentation for better readability
