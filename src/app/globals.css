@@ -2,26 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.masonary-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 280px);
+  grid-auto-rows: 20px;
+  gap: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.card{
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.small {
+  grid-row-end: span 16;
+}
+
+.medium {
+  grid-row-end: span 20;
+}
+
+.large {
+  grid-row-end: span 22;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .card {
+    scrollbar-width: auto;
+    scrollbar-color: var(--primary-color-300) var(--background);
+    cursor: pointer;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  /* Chrome, Edge, and Safari */
+  .card::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .card::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  .card::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color-300);
+    border-radius: 10px;
+    border: 0px solid var(--font-col1);
+  }
+
