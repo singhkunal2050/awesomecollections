@@ -36,6 +36,15 @@
     cursor: pointer;
   }
 
+  @media(max-width:600px) {
+    .masonary-container {
+      grid-template-columns: repeat(auto-fill, 100%);
+    }
+    .card{
+      max-width: 100%;
+    }
+  }
+
   /* Chrome, Edge, and Safari */
   .card::-webkit-scrollbar {
     width: 8px;
