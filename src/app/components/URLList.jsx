@@ -65,10 +65,17 @@ const URLList = ({ repos }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [filteredRepos, setFilteredRepos] = useState(repos);
 
-  const showSearch = (e) => {
-    const keyword = e.target.value;
-    setSearchKeyword(keyword);
+  // Debounce function to delay search execution
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  };
 
+  // Debounced search function
+  const debouncedSearch = debounce((keyword) => {
     if (keyword.trim() !== '') {
       // Create a new instance of Fuse with your data and options
       const fuse = new Fuse(repos, {
@@ -86,6 +93,14 @@ const URLList = ({ repos }) => {
     } else {
       setFilteredRepos(repos);
     }
+  }, 600); // Adjust the delay as needed
+
+  const showSearch = (e) => {
+    const keyword = e.target.value;
+    setSearchKeyword(keyword);
+
+    // Call debouncedSearch instead of immediate search
+    debouncedSearch(keyword);
   };
 
   return (
