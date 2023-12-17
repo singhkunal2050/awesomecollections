@@ -42,7 +42,7 @@ function RepoDetail({ params }) {
         <Link className='text-indigo-600 cursor-pointer' href={'/'}>Go Back</Link>
       </section>
       <section className='no-tailwind shadow-2xl m-2 p-4'>
-        {data && <div dangerouslySetInnerHTML={{ __html: md.render(data.response.content) }} />}
+        {data && <div dangerouslySetInnerHTML={{ __html: md.render(data.response) }} />}
       </section>
     </div>
   );
