@@ -1,6 +1,7 @@
 
-![Website Snap](https://i.imgur.com/fVIG9A8.png "Website Snap")
+## Awesome Collections
 
+![Website Snap](public/demo.gif)
 ## Getting Started
 
 Run project
