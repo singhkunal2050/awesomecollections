@@ -51,3 +51,10 @@
     border: 0px solid var(--font-col1);
   }
 
+.no-tailwind *{
+  all: revert;
+}
+
+.no-tailwind img{
+  max-width: 100%;
+}

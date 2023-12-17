@@ -39,9 +39,9 @@ function RepoDetail({ params }) {
   return (
     <div className='container mx-auto p-4'>
       <section>
-        <Link href={'/'}>Go Back</Link>
+        <Link className='text-indigo-600 cursor-pointer' href={'/'}>Go Back</Link>
       </section>
-      <section>
+      <section className='no-tailwind shadow-2xl m-2 p-4'>
         {data && <div dangerouslySetInnerHTML={{ __html: md.render(data.response.content) }} />}
       </section>
     </div>
